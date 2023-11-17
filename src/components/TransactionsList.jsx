@@ -33,7 +33,6 @@ const TransactionsList = () => {
               <th>Type</th>
               <th>Action</th>
             </tr>
-            
           </thead>
           <tbody className="">
             {filteredTransactions && filteredTransactions.length > 0 ? (
@@ -48,7 +47,15 @@ const TransactionsList = () => {
               })
             ) : (
               <tr className="text-[#353333] border-b border-[#f5f2f7] my-1">
-                <td className="text-sm py-3 text-[#e75e5e]" colSpan="4">No transactions have  been added yet.</td>
+                {type === "all" ? (
+                  <td className="text-sm py-3 text-[#e75e5e]" colSpan="4">
+                    No transaction has been added yet.
+                  </td>
+                ) : (
+                  <td colSpan="4" className="text-sm py-3 text-[#e75e5e]">
+                    No {type} has been added yet.
+                  </td>
+                )}
               </tr>
             )}
           </tbody>

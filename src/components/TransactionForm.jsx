@@ -3,9 +3,8 @@ import { ExpenseContext } from "../context/ExpenseContext";
 import { useNavigate } from "react-router-dom";
 
 const TransactionForm = () => {
-
   const navigate = useNavigate();
-  
+
   const { addTransaction, transactions } = useContext(ExpenseContext);
 
   const [name, setName] = React.useState("");
@@ -19,10 +18,17 @@ const TransactionForm = () => {
     if (!name) {
       errors.name = "Name is required";
     }
-      if (!amount) {
+    if (!amount) {
       errors.amount = "Amount is required";
     }
-   
+
+    if (isNaN(amount)) {
+      errors.amount = "Amount must be a number";
+    }
+
+    if (Number(amount) < 1) {
+      errors.amount = "Amount must be greater than 0";
+    }
 
     setFormErrors(errors);
   };
@@ -30,7 +36,7 @@ const TransactionForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     validate(name, amount);
-    if (name && amount) {
+    if (name && amount > 1) {
       const transaction = {
         id: transactions.length + 1,
         name,
@@ -51,7 +57,7 @@ const TransactionForm = () => {
       {
         // Display errors
         Object.keys(formErrors).map((error, index) => (
-          <div key={index} className="text-red-500">
+          <div key={index} className="text-red-500 mb-2">
             {formErrors[error]}
           </div>
         ))
@@ -67,18 +73,16 @@ const TransactionForm = () => {
             type="text"
             id="name"
             className="w-full bg-[#a69eac] rounded py-1 bg-opacity-20 outline-none px-3 text-[#7f7291]"
-            
           />
         </div>
         <div>
           <label htmlFor="amount">Amount</label>
           <input
             onChange={(e) => setAmount(+e.target.value)}
-            type="number"
+            type="text"
             id="amount"
             className="w-full bg-[#a69eac] rounded py-1 bg-opacity-20 outline-none px-3 text-[#7f7291]"
-            min='1'
-
+            min="1"
           />
         </div>
 
