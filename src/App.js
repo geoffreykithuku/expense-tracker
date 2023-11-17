@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Overview from "./components/Overview";
 import TransactionForm from "./components/TransactionForm";
@@ -8,7 +9,12 @@ function App() {
     <div className="max-w-[650px] mx-auto px-2">
       <Header />
       <Overview />
-      <TransactionForm />
+      <Routes>
+        <Route path="/" element={<TransactionsList />} />
+       
+        <Route path="/transactions/new" element={<TransactionForm />} />
+
+        </Routes>
     </div>
   );
 }
