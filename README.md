@@ -12,3 +12,4 @@
 4. Visit `localhost:3000`
 
 ### Screenshot
+![Screenshot](public/screenshot.png)
