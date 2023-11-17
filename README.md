@@ -1,8 +1,8 @@
 ## Expense Tracker
     
-  This is an expense tracker app built with React, Context API, and Tailwind. It allows users to add and remove expenses and income.
- 
-  It also displays the total balance, income, and expenses.
+   This is an expense tracker app built with React, Context API, and Tailwind. It allows users to add and remove expenses and income.
+   Data is stored in local storage.
+   It also displays the total balance, income, and expenses.
 
 ### Usage
 
