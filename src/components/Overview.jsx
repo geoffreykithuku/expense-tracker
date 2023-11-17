@@ -14,7 +14,7 @@ const Overview = () => {
         <h4 className="font-semibold text-base text-[#6114a0]">Ksh. {income}</h4>
       </span>
       <span className="shadow px-5 py-3 ">
-        <h3>Expense:</h3>
+        <h3>Expenses:</h3>
         <h4 className="font-semibold text-base text-[#6114a0]">Ksh. {expense}</h4>
       </span>
     </div>
