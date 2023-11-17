@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
-import { XCircle } from "lucide-react";
+
 import TransactionItem from "./TransactionItem";
 
 const TransactionsList = () => {
+  // get transactions from context
   const { transactions, type, handleDelete } = useContext(ExpenseContext);
 
   // if type = all, display all transactions, it type = income, display only income transactions, if type = expense, display only expense transactions
@@ -32,17 +33,24 @@ const TransactionsList = () => {
               <th>Type</th>
               <th>Action</th>
             </tr>
+            
           </thead>
-          <tbody>
-            {filteredTransactions.map((transaction) => {
-              return (
-                <TransactionItem
-                  key={transaction.id}
-                  transaction={transaction}
-                  handleDelete={handleDelete}
-                />
-              );
-            })}
+          <tbody className="">
+            {filteredTransactions && filteredTransactions.length > 0 ? (
+              filteredTransactions.map((transaction) => {
+                return (
+                  <TransactionItem
+                    key={transaction.id}
+                    transaction={transaction}
+                    handleDelete={handleDelete}
+                  />
+                );
+              })
+            ) : (
+              <tr className="text-[#353333] border-b border-[#f5f2f7] my-1">
+                <td className="text-sm py-3 text-[#e75e5e]" colSpan="4">No transactions have  been added yet.</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

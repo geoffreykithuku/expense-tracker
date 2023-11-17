@@ -1,11 +1,6 @@
 import { createContext, useState } from "react";
 
 const initialTransactions = [
-  { id: 1, name: "Rent", amount: 1000, category: "expense" },
-  { id: 2, name: "Groceries", amount: 200, category: "expense" },
-  { id: 3, name: "Gas", amount: 100, category: "expense" },
-  { id: 4, name: "Paycheck", amount: 2000, category: "income" },
-  { id: 5, name: "Freelance", amount: 500, category: "income" },
 ];
 
 
@@ -14,7 +9,7 @@ export const ExpenseContext = createContext();
 export const ExpenseProvider = ({ children }) => {
   const [transactions, setTransactions] = useState(initialTransactions);
   const [type, setType] = useState("all");
-  const [balance, setBalance] = useState(1000);
+
 
   const addTransaction = (transaction) => {
     setTransactions([...transactions, transaction]);
@@ -57,7 +52,7 @@ export const ExpenseProvider = ({ children }) => {
         setType,
         handleDelete,
         addTransaction,
-        balance,
+
         expense,
         income,
         total,

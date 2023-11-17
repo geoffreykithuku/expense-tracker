@@ -3,7 +3,9 @@ import { ExpenseContext } from "../context/ExpenseContext";
 import { useNavigate } from "react-router-dom";
 
 const TransactionForm = () => {
+
   const navigate = useNavigate();
+  
   const { addTransaction, transactions } = useContext(ExpenseContext);
 
   const [name, setName] = React.useState("");
